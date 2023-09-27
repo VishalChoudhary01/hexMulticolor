@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Different Color on Refresh</title>
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Croissant+One&display=swap");
+    body {
+      background: #111010;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      width: 800px;
+      min-height: 100vh;
+      margin: auto;
+    }
+    .main-head {
+      font-family: "Croissant One", cursive;
+      font-size: 5.5rem;
+      text-shadow: 1px 1px 0 black, 0 0 5px rgb(3, 83, 33),
+        0 0 10px rgb(228, 228, 37), 0 0 15px rgb(236, 63, 5),0 0 25px rgb(56, 221, 239);
+    }
+    .subhead {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-size: 2rem;
+    }
+  </style>
+  <body></body>
+  <script>
+    //
+    const hexGenrator = function () {
+      const randomCol = Math.floor(Math.random() * 1677215);
+      const HeXcolor = randomCol.toString(16).padStart(6, "0");
+      return `#${HeXcolor}`;
+    };
+    //
+    //
+    function randomColor(text) {
+      const container = document.createElement("header");
+      const section = document.createElement("section");
+      const heading1 = document.createElement("h1");
+      const subheading = document.createElement("h2");
+      heading1.innerText = text;
+      subheading.classList.add("subhead");
+      subheading.innerText = "Please Refresh Page to See Color Effect";
+      section.append(heading1, subheading);
+      container.appendChild(section);
+      document.body.append(container);
+      heading1.classList.add("main-head");
+      container.classList.add("container");
+      heading1.style.color = hexGenrator();
+    }
+    //
+    randomColor("Happy Birthday", hexGenrator());
+  </script>
+</html>
